@@ -10,9 +10,9 @@ class Solution:
             valid = True
             for i in word:
                 charword[i] = 1 + charword.get(i,0)
-            for i in word:
                 if charmp.get(i,0) < charword.get(i,0):
                     valid = False
+                    break
             if valid:
                 ans += len(word)
         return ans
