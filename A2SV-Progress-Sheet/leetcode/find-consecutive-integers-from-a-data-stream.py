@@ -12,7 +12,7 @@ class DataStream:
         if len(self.queue) < self.k:
             self.queue.appendleft(num)
             return self.k == self.same
-        if self.k == len(self.queue) and self.value == self.queue[-1]:
+        if self.value == self.queue[-1]:
             self.same -= 1
         self.queue.pop()
         self.queue.appendleft(num)
