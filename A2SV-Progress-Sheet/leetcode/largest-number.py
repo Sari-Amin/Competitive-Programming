@@ -1,10 +1,10 @@
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
-        nums.sort(key = lambda x: x // 10 ** (len(str(x)) - 1), reverse = True)
-        for i in range(len(nums) - 1):
-            for j in range(i + 1,len(nums)):
-                if str(nums[i]) + str(nums[j]) < str(nums[j]) + str(nums[i]):
-                    nums[i], nums[j] = nums[j], nums[i]
-        
-
-        return str(int("".join(map(str,nums))))
+        def compare(s1,s2):
+            if (s1 + s2) < (s2 + s1):
+                return -1
+            elif (s1 + s2) == (s2 + s1):
+                return 0
+            else:
+                return 1
+        return str(int("".join(sorted(map(str,nums), key = cmp_to_key(compare), reverse = True))))
