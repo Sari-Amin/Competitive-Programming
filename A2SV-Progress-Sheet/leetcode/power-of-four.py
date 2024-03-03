@@ -5,5 +5,7 @@ class Solution:
             return True
         if n < 1:
             return False
+        if n % 4:
+            return False
             
         return self.isPowerOfFour(n / 4)  
