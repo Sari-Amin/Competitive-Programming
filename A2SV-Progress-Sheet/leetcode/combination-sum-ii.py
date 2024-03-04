@@ -13,19 +13,16 @@ class Solution:
                 return
 
             for i in range(index, len(unique)):
-                if unique[i] in freq:
+                if freq[unique[i]] != 0:
                     path.append(unique[i])
                     sm += unique[i]
                     freq[unique[i]] -= 1
-                    if freq[unique[i]] > 0:
-                        backtrack(i, path, sm)
-                    else:
-                        backtrack(i + 1, path, sm)
+                    backtrack(i, path, sm)
                     sm -= unique[i]
                     path.pop()
                     freq[unique[i]] += 1
 
 
         backtrack(0)
-        
+
         return ans
