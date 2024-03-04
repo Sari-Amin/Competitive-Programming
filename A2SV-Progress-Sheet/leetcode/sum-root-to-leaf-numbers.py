@@ -14,9 +14,9 @@ class Solution:
                 return 
             if not root.left and not root.right:
                 ans += int(sm + str(root.val))
-
-            dfs(root.left, sm + str(root.val))
-            dfs(root.right, sm + str(root.val))
+            sm += str(root.val)
+            dfs(root.left, sm)
+            dfs(root.right, sm)
         
         dfs(root)
         return ans
