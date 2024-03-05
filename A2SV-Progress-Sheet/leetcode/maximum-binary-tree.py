@@ -8,15 +8,21 @@ class Solution:
     def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[TreeNode]:
         
         def dfs(l,r):
-            
+
             if r < l:
                 return
             
-            max_ = max(nums[l:r + 1])
-            index = nums.index(max_)
+            max_ = float("-inf")
+            index = l
+            for i in range(l,r + 1):
+                if nums[i] > max_:
+                    max_ = nums[i]
+                    index = i
+
             Node = TreeNode(max_)
             Node.left = dfs(l, index - 1)
             Node.right = dfs(index + 1, r)
             return Node
+
         return dfs(0, len(nums) - 1)
          
